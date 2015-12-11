@@ -579,7 +579,7 @@ static void calcSIFTDescriptor( const Mat& img, Point2f ptf, float ori, float sc
     int radius = cvRound(hist_width * 1.4142135623730951f * (d + 1) * 0.5f);
     // Clip the radius to the diagonal of the image to avoid autobuffer too large exception
     radius = std::min(radius, (int) sqrt((double) img.cols*img.cols + img.rows*img.rows));
-    cos_t /= hist_width;
+    cos_t /= hist_width;//Here is the tricy code which converts rotated (x,y) into bins. Added by zhaoyafei 20151211
     sin_t /= hist_width;
 
     int i, j, k, len = (radius*2+1)*(radius*2+1), histlen = (d+2)*(d+2)*(n+2);
